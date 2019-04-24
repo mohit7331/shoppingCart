@@ -256,13 +256,14 @@ app.get('/cart/:userid',function(req,res){
    res.sendFile(__dirname+"/public/cart.html");
 })
   
+
+const PORT = process.env.PORT || 6969
 db.sync({force:true}).then(()=>{
-    console.log("sync success");
      Vendor.create({name:"Samsung"});
      Vendor.create({name:"Apple"})
-     Vendor.create({name:"redmi"})
+     Vendor.create({name:"Nokia"})
      Product.create({name:"Iphone",price:50,VendorId:1})
-     Product.create({name:"Redmi note 7 pro",price:100,VendorId:1})
+     Product.create({name:"Nokia 7 pro",price:100,VendorId:3})
      User.create({name:"Pawan"})
      User.create({name:"Anshul"})
      User.create({name:"Rahul"})
@@ -272,7 +273,7 @@ db.sync({force:true}).then(()=>{
      Cart.create({ProductId:2,UserId:1,Quantity:20});
      Cart.create({ProductId:2,UserId:4,Quantity:20});
      Cart.create({ProductId:2,UserId:3,Quantity:20});
-     app.listen(8989,function(){
+     app.listen(PORT,function(){
         console.log("server is listening");
     })
   })
